@@ -1,3 +1,4 @@
+require ('dotenv').config()
 const express = require ('express')
 const app = express ()
 const morgan = require ('morgan')
@@ -19,6 +20,20 @@ app.use ('/api', apiRouter)
 app.use ((req, res) => {
     res.status (404).send ('Recurso não existente')
 })
+
+// apiRouter.get(endpoint + 'produtos', (req, res) => { 
+//     knex.select('*').from('produto') 
+//     .then( produtos => res.status(200).json(produtos) ) 
+//     .catch(err => { 
+//         res.status(500).json({  
+//            message: 'Erro ao recuperar produtos - ' + err.message }) 
+//     })   
+// })
+
+// apiRouter.get(endpoint + 'produtos/:id', (req, res) => { ... }) 
+// apiRouter.post(endpoint + 'produtos', (req, res) => { ... }) 
+// apiRouter.put(endpoint + 'produtos/:id', (req, res) => { ... }) 
+// apiRouter.delete(endpoint + 'produtos/:id', (req, res) => { ... }) 
 
 port = process.env.PORT || 3000
 app.listen (port, () => {
